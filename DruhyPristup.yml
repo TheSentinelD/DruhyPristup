@@ -16,5 +16,5 @@
      register: psw_out
     
    - name: ukládání do lokální složky
-     local_action: lineinfile line="{{ ansible_hostname }}   {{ psw_out.stdout | replace('\n','')}}" path="/srv/psw/psw"
+     local_action: copy content="{{ psw_out.stdout | replace('\n','')}}" dest="/srv/psw/{{ ansible_hostname }}"
      

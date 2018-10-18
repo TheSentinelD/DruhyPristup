@@ -1,0 +1,19 @@
+﻿---
+- name: Druhý přístup do PC
+  hosts: "{{ seznam_stanic }}"
+  tasks: 
+   - name: test
+     win_shell: |
+      $punc = 46..46
+      $digits = 48..57
+      $letters = 65..90 + 97..122
+      $YouShallNotPass = get-random -count 15 `
+      -input ($punc + $digits + $letters) |
+      % -begin { $aa = $null } `
+      -process {$aa += [char]$_} `
+      -end {$aa}
+      Write-Host "$YouShallNotPass"
+     register: psw_out
+    
+   - name: ukládání do lokální složky
+     local_action: copy content="{{ psw_out.stdout | replace('\n','')}}" dest="/srv/psw/psw"

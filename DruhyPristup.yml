@@ -20,5 +20,5 @@
       msg: "{{ psw_out.stdout | replace('\n','') }}"
     
    - name: ukládání do lokální složky
-     local_action: copy content="{{ psw_out.stdout | replace('\n','')}}" dest="/srv/psw/psw"
+     local_action: lineinfile line="{{ psw_out.stdout | replace('\n','')}}" path="/srv/psw/psw"
      

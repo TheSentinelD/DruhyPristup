@@ -4,6 +4,6 @@
   tasks: 
    - name: test
      win_user: 
-       name: PrvniAdmin
+       name: '{{ jmeno }}'
        state: absent
      

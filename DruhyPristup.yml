@@ -2,7 +2,7 @@
 - name: Druhý přístup do PC
   hosts: "{{ seznam_stanic }}"
   tasks: 
-   - name: test
+   - name: Odstranění účtu
      win_user: 
        name: '{{ jmeno }}'
        state: absent
